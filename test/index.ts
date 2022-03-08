@@ -1,5 +1,6 @@
 import { expect } from "chai";
 import { ethers } from "hardhat";
+import { BigNumber } from "ethers";
 import { deployMockContract } from "@ethereum-waffle/mock-contract";
 
 const Verifier = require("../artifacts/contracts/Verifier.sol/Verifier.json");
@@ -21,10 +22,19 @@ describe("TrailFactory", function () {
       Verifier.abi
     );
 
-    const maxLatitude = 36.567251 + 90;
-    const minLatitude = 36.550459 + 90;
-    const maxLongitude = -105.408364 + 180;
-    const minLongitude = -105.43458 + 180;
+    // const maxLatitude = 36.567251 + 90;
+    const maxLatitude = BigNumber.from(36567251).add(90000000);
+    const minLatitude = BigNumber.from(36550459).add(90000000);
+    const maxLongitude = BigNumber.from(-105408364).add(180000000);
+    const minLongitude = BigNumber.from(-105434580).add(180000000);
+
+    const latitude = 36.560418;
+    const longitude = -105.419813;
+
+    console.log("maxLatitude", maxLatitude);
+    console.log("maxLongitude", maxLongitude);
+    console.log("minLatitude", minLatitude);
+    console.log("minLongitude", minLongitude);
 
     const name = "Wheeler Peak Trail";
     const imageUrl =
@@ -33,10 +43,10 @@ describe("TrailFactory", function () {
     await expect(
       trailFactory.createTrail(
         mockVerifier.address,
-        ethers.utils.parseUnits(maxLatitude.toString()),
-        ethers.utils.parseUnits(minLatitude.toString()),
-        ethers.utils.parseUnits(maxLongitude.toString()),
-        ethers.utils.parseUnits(minLongitude.toString()),
+        maxLatitude,
+        minLatitude,
+        maxLongitude,
+        minLongitude,
         name,
         imageUrl
       )

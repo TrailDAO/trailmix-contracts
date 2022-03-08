@@ -1,14 +1,15 @@
-// pragma circom 2.0.0;
+pragma circom 2.0.0;
 
-include "./dependencies/circomlib/comparators.circom";
+include "../node_modules/circomlib/circuits/comparators.circom";
 
 // Utility functions for location based circuits
+// Based on https://github.com/zkMaps/zkMaps 
 
 template AssertFixedLocation(maxLatitude, maxLongitude, minLatitude, minLongitude) {
-    signal private input latitude;
-    signal private input longitude;
+    signal input latitude;
+    signal input longitude;
 
-    signal output o; // necessary to compile as per https://github.com/iden3/snarkjs/issues/116#issuecomment-1020352690
+    signal output o;
     o <== 1;
 
     component a = AssertInLocation();
@@ -52,6 +53,4 @@ template AssertInLocation() {
     lt4.out === 1;
 }
 
-// Public definition of ethdenver
-// 4 city blocks defines as the rectangle between 12th, Lincoln, 10th, and Acoma
-component main = AssertFixedLocation(12973547807205027, 7501387182542445, 12973227978507761, 7500977777251778);
+component main = AssertFixedLocation(126567251, 74591636, 126550459, 74565420);

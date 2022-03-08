@@ -4,6 +4,12 @@ coverage
 coverage.json
 typechain
 
-#Hardhat files
+# Hardhat files
 cache
 artifacts
+
+# Circuit build files
+circuits/Location_cpp
+circuits/Location_js
+circuits/Location.r1cs
+circuits/Location.sym
