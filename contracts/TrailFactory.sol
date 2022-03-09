@@ -14,6 +14,8 @@ contract TrailFactory {
     TrailToken public trailToken;
     TrailDAONFT public trailDAONFT;
 
+    mapping(address => bool) private trails;
+
     event TrailCreated(address verifier, string name, address trailAddress);
 
     constructor(TrailToken _trailToken, TrailDAONFT _trailDAONFT) {
@@ -37,6 +39,12 @@ contract TrailFactory {
             this
         );
 
+        trails[address(trail)] = true;
+
         emit TrailCreated(address(verifier), name, address(trail));
+    }
+
+    function isTrail(address trail) public view returns (bool) {
+        return trails[trail];
     }
 }

@@ -37,12 +37,23 @@ contract Trail {
         trailDAONFT = _factory.trailDAONFT();
     }
 
-    // hike is the thing we need for generatecall
-    function hike() external {
-        require(trailDAONFT.balanceOf(msg.sender) > 0, "Mint an NFT");
-        // If yes, call verifier
+    struct ProofInputs {
+        uint[2] a;
+        uint[2][2] b;
+        uint[2] c;
+        uint[1] input;
+    }
 
-        // If verifyProof is true, then give msg.sender tokens
+    function hike(ProofInputs calldata proof) external {
+        require(trailDAONFT.balanceOf(msg.sender) > 0, "Mint an NFT");
+        require(verifier.verifyProof(
+            proof.a, 
+            proof.b, 
+            proof.c, 
+            proof.input
+        ), "Out of range");
+
+        trailToken.mint(msg.sender, 1000);
     }
 
 }
