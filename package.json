@@ -4,7 +4,11 @@
     "compile": "hardhat compile",
     "test": "hardhat test",
     "circom:compile": "./circuits/compile.sh",
-    "circom:witness": "./circuits/generate_witness.sh"
+    "circom:witness": "./circuits/generate_witness.sh",
+    "circom:ptau": "./circuits/powers_of_tau.sh",
+    "circom:proof": "./circuits/generate_proof.sh",
+    "circom:contract": "./circuits/create_contract.sh",
+    "circom:generatecall": "cd circuits && snarkjs generatecall"
   },
   "license": "MIT",
   "devDependencies": {

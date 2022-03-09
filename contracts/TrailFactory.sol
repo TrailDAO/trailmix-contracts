@@ -10,19 +10,11 @@ contract TrailFactory {
 
     function createTrail(
         address verifier,
-        uint256 maxLatitude,
-        uint256 minLatitude,
-        uint256 maxLongitude,
-        uint256 minLongitude,
         string calldata name, 
         string calldata imageUrl
     ) external {
         Trail trail = new Trail(
             verifier,
-            maxLatitude,
-            minLatitude,
-            maxLongitude,
-            minLongitude,
             name, 
             imageUrl
         );
