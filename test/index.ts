@@ -2,6 +2,8 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { BigNumber } from "ethers";
 import { deployMockContract } from "@ethereum-waffle/mock-contract";
+// eslint-disable-next-line node/no-missing-import
+import { TrailDAONFT } from "../typechain/TrailDAONFT";
 
 const Verifier = require("../artifacts/contracts/Verifier.sol/Verifier.json");
 const Token = require("../artifacts/contracts/TrailToken.sol/TrailToken.json");
@@ -98,6 +100,34 @@ describe("TrailToken", function () {
     const TrailToken = await ethers.getContractFactory("TrailToken");
     const trailToken = await TrailToken.deploy("Trail DAO", "TRAIL");
     await trailToken.deployed();
+  });
+});
+
+describe("TrailDAONFT", function () {
+  let trailNFT: TrailDAONFT;
+  beforeEach(async () => {
+    const TrailDAONFT = await ethers.getContractFactory("TrailDAONFT");
+    trailNFT = await TrailDAONFT.deploy("Trail DAO NFT", "TRAILNFT");
+    await trailNFT.deployed();
+  });
+
+  it("should mint nft", async function () {
+    const tx = await trailNFT.mint({ value: ethers.utils.parseEther("0.05") });
+    await tx.wait();
+  });
+
+  it("should not mint if value incorrect", async function () {
+    await expect(trailNFT.mint()).to.be.reverted;
+    await expect(trailNFT.mint({ value: ethers.utils.parseEther("0.1") })).to.be
+      .reverted;
+  });
+
+  it("should only mint one per owner", async function () {
+    const tx = await trailNFT.mint({ value: ethers.utils.parseEther("0.05") });
+    await tx.wait();
+
+    await expect(trailNFT.mint({ value: ethers.utils.parseEther("0.05") })).to
+      .be.reverted;
   });
 });
 

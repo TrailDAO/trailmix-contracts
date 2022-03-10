@@ -3,6 +3,8 @@
   "scripts": {
     "compile": "hardhat compile",
     "test": "hardhat test",
+    "deploy:nft": "hardhat run scripts/deployNFT.ts",
+    "deploy:nft:rinkeby": "hardhat run scripts/deployNFT.ts --network rinkeby",
     "circom:compile": "./circuits/compile.sh",
     "circom:witness": "./circuits/generate_witness.sh",
     "circom:ptau": "./circuits/powers_of_tau.sh",
@@ -26,7 +28,7 @@
     "@typescript-eslint/parser": "^4.33.0",
     "chai": "^4.3.6",
     "circomlib": "^2.0.3",
-    "dotenv": "^10.0.0",
+    "dotenv": "^16.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^16.0.3",
