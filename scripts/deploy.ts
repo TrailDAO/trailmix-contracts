@@ -1,18 +1,13 @@
 import { ethers } from "hardhat";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 async function main() {
-  const TrailToken = await ethers.getContractFactory("TrailToken");
-  const trailToken = await TrailToken.deploy("Trail DAO", "TRAIL");
-  await trailToken.deployed();
-
-  const TrailDAONFT = await ethers.getContractFactory("TrailDAONFT");
-  const trailDAONFT = await TrailDAONFT.deploy("TRAIL DAO NFT", "TRAILNFT");
-  await trailDAONFT.deployed();
-
   const TrailFactory = await ethers.getContractFactory("TrailFactory");
   const trailFactory = await TrailFactory.deploy(
-    trailToken.address,
-    trailDAONFT.address
+    process.env.TRAIL_TOKEN_ADDRESS || "",
+    process.env.TRAIL_NFT_ADDRESS || ""
   );
 
   await trailFactory.deployed();

@@ -5,6 +5,11 @@
     "test": "hardhat test",
     "deploy:nft": "hardhat run scripts/deployNFT.ts",
     "deploy:nft:rinkeby": "hardhat run scripts/deployNFT.ts --network rinkeby",
+    "deploy:token": "hardhat run scripts/deployToken.ts",
+    "deploy:token:rinkeby": "hardhat run scripts/deployToken.ts --network rinkeby",
+    "deploy:factory": "hardhat run scripts/deploy.ts",
+    "deploy:factory:rinkeby": "hardhat run scripts/deploy.ts --network rinkeby",
+    "es:ingest": "hardhat run scripts/ingestElasticSearch.ts",
     "circom:compile": "./circuits/compile.sh",
     "circom:witness": "./circuits/generate_witness.sh",
     "circom:ptau": "./circuits/powers_of_tau.sh",
@@ -47,5 +52,10 @@
     "ts-node": "^10.7.0",
     "typechain": "^5.2.0",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.1.0",
+    "@types/lodash": "^4.14.179",
+    "lodash": "^4.17.21"
   }
 }
