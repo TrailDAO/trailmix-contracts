@@ -1,3 +1,33 @@
+# TrailMix
+TrailMix is the first regenerative cryptoeconomy for outdoor recreational activities and organizations that maintain natural resources. Hiking trails suffer from the free rider problem. The public use hiking trails and campsites and the trail reconstruction or maintenance organizations that assist government agencies are underfunded and rely on volunteers to do incredibly labor intensive work to keep these resources open.
+
+Players:
+1. Hikers
+2. Trail Reconstruction organizations and their volunteers
+3. Government agencies
+4. Corporations that sponsor trail reconstruction
+
+TrailMix will coordinate all four players and create a positive-sum economy for the players on the Polygon network using Zero-Knowledge proofs.
+
+A hiker can mint a TrailMix NFT on the Polygon network that gives them access to the system. The funds from the NFT sale will form a treasury for the TrailDAO whose mandate is to manage the trails and token allocation in TrailMix.
+
+Each trail in the system will have a zk proof verifier contract deployed to Polygon to verify that hikers have visited the trail. A hiker will receive $TRAIL tokens that give them a vote within TrailDAO. $TRAIL tokens on a hike can also be allocated to a sponsoring organization for the trail. The more you give and hike, the more you get. Those that only hike, will get fewer and fewer tokens over time. Volunteers that do the work of trail reconstruction will also get special allocations.
+
+The funds raised from $TRAIL purchases and NFT sales will be granted in seasons to trail reconstruction organizations as determined by the DAO.
+
+# Creating a Trail
+A trail has a verifier zk proof and general information about the trail. A trail is created with the Trail Factory contract.
+
+The verifier instructions are below. For now, just know that you need the address of the deployed contract.
+
+The bounding box and trail path geo coordinates are also needed to define a trail. Store an image of the trail on IPFS and give it a name.
+
+# Creating a Trail Verifier
+
+yarn deploy:verifier
+
+This script will deploy the Verifier.sol found in the contracts directory.
+
 # Advanced Sample Hardhat Project
 
 This project demonstrates an advanced Hardhat use case, integrating other tools commonly used alongside Hardhat in the ecosystem.
