@@ -53,5 +53,5 @@ template AssertInLocation() {
     lt4.out === 1;
 }
 
-// Insert your trail bounding rectangle here 
-component main = AssertFixedLocation(126567251, 74591636, 126550459, 74565420);
+// Insert your trail bounding rectangle here
+component main = AssertFixedLocation(125220808, 82538844, 125219642, 82536473);
