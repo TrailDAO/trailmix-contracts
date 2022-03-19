@@ -1,6 +1,5 @@
 import { Client } from "@elastic/elasticsearch";
 import { ethers } from "hardhat";
-import { uniqBy } from "lodash";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -16,6 +15,7 @@ const client = new Client({
 });
 
 const getTrailFactory = async () => {
+  console.log("TrailFactory address", process.env.TRAIL_FACTORY_ADDRESS);
   const trailFactory = await ethers.getContractAt(
     "TrailFactory",
     process.env.TRAIL_FACTORY_ADDRESS || ""
@@ -27,17 +27,25 @@ const getTrails = async () => {
   const trails = [];
 
   const trailFactory = await getTrailFactory();
-  const filter = await trailFactory.filters.TrailCreated();
-  const logs = await trailFactory.queryFilter(filter, 10307972, "latest");
+  const filter = trailFactory.filters.TrailCreated();
+  const logs = await trailFactory.queryFilter(filter);
+  console.log("Logs found", logs.length);
   for (let i = 0; i < logs.length; i++) {
-    const event = logs[i];
-    if (event.args) {
-      const trailAddress = event.args.trailAddress;
-      trails.push(trailAddress);
-    }
+    const log = logs[i];
+    const name = log.args.name;
+    const verifier = log.args.verifier;
+    const trailAddress = log.args.trailAddress;
+    console.log(
+      "Trail %s, verifier %s, address %s",
+      name,
+      verifier,
+      trailAddress
+    );
+
+    trails.push(trailAddress);
   }
 
-  return uniqBy(trails, "_hex");
+  return trails;
 };
 
 (async () => {

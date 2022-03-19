@@ -12,6 +12,7 @@
     "deploy:verifiers": "hardhat run scripts/deployVerifiers.ts",
     "deploy:verifiers:rinkeby": "hardhat run scripts/deployVerifiers.ts --network rinkeby",
     "es:ingest": "hardhat run scripts/ingestElasticSearch.ts",
+    "es:ingest:rinkeby": "hardhat run scripts/ingestElasticSearch.ts --network rinkeby",
     "circom:compile": "./circuits/compile.sh",
     "circom:witness": "./circuits/generate_witness.sh",
     "circom:ptau": "./circuits/powers_of_tau.sh",
