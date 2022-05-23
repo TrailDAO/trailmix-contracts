@@ -101,11 +101,11 @@ const main = async () => {
           value: `${pant}`,
         },
         {
-          trail_type: "Boots",
+          trait_type: "Boots",
           value: `${boot}`,
         },
         {
-          trail_type: "Trekking Poles",
+          trait_type: "Trekking Poles",
           value: `${stick}`,
         },
       ],

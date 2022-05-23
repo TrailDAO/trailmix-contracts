@@ -1,0 +1,8 @@
+{
+    "name": "TrailMix NFT",
+    "description": "TrailMix NFT Hikers are your access to the TrailMix app. Hike thousands of trails and earn TRAIL tokens in a positive-sum regenerative economy benefiting trail reconstruction and maintenance.",
+    "image": "ipfs://bafkreifhi7h6dwqtezwby2qinfxo4c7zcbngnco5fn32idwfxjfqdqpu7y",
+    "external_link": "https://trailmix.eco",
+    "seller_fee_basis_points": 100,
+    "fee_recipient": "0x4d271Fa78988E0fCEe03CB28FB0F3300F7577E7A"
+}

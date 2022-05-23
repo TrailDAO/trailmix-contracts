@@ -12,20 +12,21 @@ contract TrailMixNFT is ERC721Enumerable, Ownable {
 
     Counters.Counter private tokenIds;
 
-    uint256 public mintPrice = 0.05 ether;
+    uint256 public mintPrice = 0.005 ether;
 
-    string public _collectionURI = "";
+    string private _collectionURI = "";
+    string public contractURI = "";
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {
     }
 
     function mint() external payable {
-        require(balanceOf(msg.sender) == 0, "Unable to mint more than one");
         require(msg.value == mintPrice, "Insufficient funds");
 
         tokenIds.increment();
 
         _safeMint(msg.sender, tokenIds.current());
+        // TODO: Refund excess
     }
 
     function setCollectionURI(string memory collectionURI) external onlyOwner {
@@ -34,6 +35,10 @@ contract TrailMixNFT is ERC721Enumerable, Ownable {
 
     function _baseURI() internal override view virtual returns (string memory) {
         return _collectionURI;
+    }
+
+    function setContractURI(string memory _contractURI) external onlyOwner {
+        contractURI = _contractURI;
     }
 
     function withdraw(address asset) external onlyOwner {

@@ -5,7 +5,7 @@
     "test": "hardhat test",
     "deploy:nft": "hardhat run scripts/deployNFT.ts",
     "deploy:nft:rinkeby": "hardhat run scripts/deployNFT.ts --network rinkeby",
-    "verify:nft:rinkeby": "npx hardhat verify --network rinkeby 0xA70066F0163BC14843721F10f2FF8cfA706a648D \"TrailMix NFT\" \"TRAILNFT\"",
+    "verify:nft:rinkeby": "npx hardhat verify --network rinkeby 0xA36A3e32E31AD3566b37FbB0942f1C28Ba296219 \"TrailMix NFT\" \"TRAILNFT\"",
     "deploy:token": "hardhat run scripts/deployToken.ts",
     "deploy:token:rinkeby": "hardhat run scripts/deployToken.ts --network rinkeby",
     "deploy:factory": "hardhat run scripts/deploy.ts",
