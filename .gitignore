@@ -16,3 +16,6 @@ circuits/Location.sym
 
 # NFT assets
 metadataDir
+
+# mac files
+.DS_Store
