@@ -2,12 +2,10 @@ import { expect } from "chai";
 import { ethers } from "hardhat";
 import { BigNumber } from "ethers";
 import { deployMockContract } from "@ethereum-waffle/mock-contract";
-// eslint-disable-next-line node/no-missing-import
-import { TrailDAONFT } from "../typechain/TrailDAONFT";
 
-const Verifier = require("../artifacts/contracts/Verifier.sol/Verifier.json");
+const Verifier = require("../artifacts/contracts/VerifierInterface.sol/VerifierInterface.json");
 const Token = require("../artifacts/contracts/TrailToken.sol/TrailToken.json");
-const NFT = require("../artifacts/contracts/TrailDAONFT.sol/TrailDAONFT.json");
+const NFT = require("../artifacts/contracts/TrailMixNFT.sol/TrailMixNFT.json");
 
 const ninetyDegrees = BigNumber.from(90000000);
 const oneEightyDegrees = BigNumber.from(180000000);
@@ -103,38 +101,32 @@ describe("TrailToken", function () {
   });
 });
 
-describe("TrailDAONFT", function () {
-  let trailNFT: TrailDAONFT;
-  beforeEach(async () => {
-    const TrailDAONFT = await ethers.getContractFactory("TrailDAONFT");
-    trailNFT = await TrailDAONFT.deploy("Trail DAO NFT", "TRAILNFT");
-    await trailNFT.deployed();
-  });
-
+describe("TrailMixNFT", function () {
   it("should mint nft", async function () {
+    const TrailMixNFT = await ethers.getContractFactory("TrailMixNFT");
+    const trailNFT = await TrailMixNFT.deploy("TrailMix NFT", "TRAILNFT");
+    await trailNFT.deployed();
     const tx = await trailNFT.mint({ value: ethers.utils.parseEther("0.05") });
     await tx.wait();
   });
 
   it("should not mint if value incorrect", async function () {
+    const TrailMixNFT = await ethers.getContractFactory("TrailMixNFT");
+    const trailNFT = await TrailMixNFT.deploy("TrailMix NFT", "TRAILNFT");
+    await trailNFT.deployed();
     await expect(trailNFT.mint()).to.be.reverted;
     await expect(trailNFT.mint({ value: ethers.utils.parseEther("0.1") })).to.be
       .reverted;
   });
 
   it("should only mint one per owner", async function () {
+    const TrailMixNFT = await ethers.getContractFactory("TrailMixNFT");
+    const trailNFT = await TrailMixNFT.deploy("TrailMix NFT", "TRAILNFT");
+    await trailNFT.deployed();
     const tx = await trailNFT.mint({ value: ethers.utils.parseEther("0.05") });
     await tx.wait();
 
     await expect(trailNFT.mint({ value: ethers.utils.parseEther("0.05") })).to
       .be.reverted;
-  });
-});
-
-describe("Verifier", function () {
-  it("should deploy successfully", async function () {
-    const Verifier = await ethers.getContractFactory("Verifier");
-    const verifier = await Verifier.deploy();
-    await verifier.deployed();
   });
 });

@@ -13,3 +13,6 @@ circuits/Location_cpp
 circuits/Location_js
 circuits/Location.r1cs
 circuits/Location.sym
+
+# NFT assets
+metadataDir

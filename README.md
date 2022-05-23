@@ -9,11 +9,13 @@ Players:
 
 TrailMix will coordinate all four players and create a positive-sum economy for the players on the Polygon network using Zero-Knowledge proofs.
 
-A hiker can mint a TrailMix NFT on the Polygon network that gives them access to the system. The funds from the NFT sale will form a treasury for the TrailDAO whose mandate is to manage the trails and token allocation in TrailMix.
+Minting a TrailMix NFT on the Polygon network, gives outdoor enthusiasts access to the web3 app. The funds from the NFT sale will form a treasury for TrailDAO whose mandate is to manage the trails within the app, find and verify sponsoring trail organizations, and determine token allocation in TrailMix from season to season.
 
-Each trail in the system will have a zk proof verifier contract deployed to Polygon to verify that hikers have visited the trail. A hiker will receive $TRAIL tokens that give them a vote within TrailDAO. $TRAIL tokens on a hike can also be allocated to a sponsoring organization for the trail. The more you give and hike, the more you get. Those that only hike, will get fewer and fewer tokens over time. Volunteers that do the work of trail reconstruction will also get special allocations.
+Each trail in the system will have a zk proof verifier contract deployed to Polygon to verify that hikers have visited the trail. A hiker will receive $TRAIL tokens that give them a vote within TrailDAO. $TRAIL tokens on a hike can also be allocated to a sponsoring organization for the trail. The more you give and hike, the more you get. Those that only hike, will get fewer and fewer tokens over time. Volunteers that do the work of trail reconstruction will also get special allocations determined by the DAO.
 
 The funds raised from $TRAIL purchases and NFT sales will be granted in seasons to trail reconstruction organizations as determined by the DAO.
+
+
 
 # Creating a Trail
 A trail has a verifier zk proof and general information about the trail. A trail is created with the Trail Factory contract.
@@ -27,6 +29,11 @@ The bounding box and trail path geo coordinates are also needed to define a trai
 yarn deploy:verifier
 
 This script will deploy the Verifier.sol found in the contracts directory.
+
+## Debugging Metadata
+https://testnets-api.opensea.io/asset/0xA70066F0163BC14843721F10f2FF8cfA706a648D/1/validate/
+
+https://docs.opensea.io/docs/4-debugging-your-metadata
 
 # Advanced Sample Hardhat Project
 

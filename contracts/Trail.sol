@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./TrailLibrary.sol";
 import "./TrailFactory.sol";
-import "./TrailDAONFT.sol";
+import "./TrailMixNFT.sol";
 import "./TrailToken.sol";
 import "./VerifierInterface.sol";
 
@@ -17,7 +17,7 @@ contract Trail {
     TrailLibrary.BoundingBox public boundingBox;
 
     TrailToken public trailToken;
-    TrailDAONFT public trailDAONFT;
+    TrailMixNFT public trailMixNFT;
     VerifierInterface public verifier;
 
     constructor(
@@ -34,7 +34,7 @@ contract Trail {
         boundingBox = _boundingBox;
         trailPath = _trailPath;
         trailToken = _factory.trailToken();
-        trailDAONFT = _factory.trailDAONFT();
+        trailMixNFT = _factory.trailMixNFT();
     }
 
     struct ProofInputs {
@@ -45,7 +45,7 @@ contract Trail {
     }
 
     function hike(ProofInputs calldata proof) external {
-        require(trailDAONFT.balanceOf(msg.sender) > 0, "Mint an NFT");
+        require(trailMixNFT.balanceOf(msg.sender) > 0, "Mint an NFT");
         require(verifier.verifyProof(
             proof.a, 
             proof.b, 

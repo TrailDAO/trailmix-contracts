@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./Trail.sol";
 import "./TrailToken.sol";
-import "./TrailDAONFT.sol";
+import "./TrailMixNFT.sol";
 import "./TrailLibrary.sol";
 import "./VerifierInterface.sol";
 
@@ -12,15 +12,15 @@ import "hardhat/console.sol";
 contract TrailFactory {
 
     TrailToken public trailToken;
-    TrailDAONFT public trailDAONFT;
+    TrailMixNFT public trailMixNFT;
 
     mapping(address => bool) private trails;
 
     event TrailCreated(address verifier, string name, address trailAddress);
 
-    constructor(TrailToken _trailToken, TrailDAONFT _trailDAONFT) {
+    constructor(TrailToken _trailToken, TrailMixNFT _trailMixNFT) {
         trailToken = _trailToken;
-        trailDAONFT = _trailDAONFT;
+        trailMixNFT = _trailMixNFT;
     }
 
     function createTrail(

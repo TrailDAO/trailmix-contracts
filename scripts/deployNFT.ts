@@ -1,11 +1,11 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const TrailDAONFT = await ethers.getContractFactory("TrailDAONFT");
-  const trailDAONFT = await TrailDAONFT.deploy("TRAIL DAO NFT", "TRAILNFT");
-  await trailDAONFT.deployed();
+  const TrailMixNFT = await ethers.getContractFactory("TrailMixNFT");
+  const trailMixNFT = await TrailMixNFT.deploy("TrailMix NFT", "TRAILNFT");
+  await trailMixNFT.deployed();
 
-  console.log("Trail DAO NFT", trailDAONFT.address);
+  console.log("TrailMix NFT", trailMixNFT.address);
 }
 
 main().catch((error) => {
